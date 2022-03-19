@@ -4,4 +4,11 @@
     <string name="app_name">Mumble PTT</string>
     <!-- description -->
     <string name="app_desc">This plugin toggles Mumble PTT</string>
+    <!-- Settings / Preferences -->
+    <string name="preferences_title">Mumble PTT Plugin Preferences</string>
+    <string name="preferences_summary">Allow configuration of Mumble PTT plugin</string>
+    <string name="set_ptt">Set PTT key behavior</string>
+    <string name="set_ptt_summary">Configures the widget to function as a PTT vs hot mic</string>
+    <!-- SharedPreferences Keys -->
+    <string name="key_mumbleptt_preferences">plugin_mumbleptt_preferences</string>
 </resources>

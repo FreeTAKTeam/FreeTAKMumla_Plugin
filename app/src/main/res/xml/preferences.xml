@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/preferences_title" />
+    <com.atakmap.android.gui.PanSwitchPreference
+        android:key="plugin_mumbleptt_ptt"
+        android:title="@string/set_ptt"
+        android:summary="@string/set_ptt_summary"
+        android:defaultValue="true" />
+</PreferenceScreen>
