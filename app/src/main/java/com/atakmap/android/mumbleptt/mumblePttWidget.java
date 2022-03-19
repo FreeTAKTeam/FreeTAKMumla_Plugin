@@ -17,22 +17,21 @@ import com.atakmap.coremap.log.Log;
 import com.atakmap.android.mumbleptt.plugin.R;
 
 public class mumblePttWidget extends MarkerIconWidget
-        implements MapWidget.OnClickListener {
+        implements MapWidget.OnPressListener, MapWidget.OnUnpressListener {
     private final static int ICON_WIDTH = 64;
     private final static int ICON_HEIGHT = 64;
 
-    private mumblePttDropDownReceiver ddr;
     public static final String TAG = "mumblePttWidget";
 
     private int toggled = 0;
 
-    public mumblePttWidget(MapView mapView, mumblePttDropDownReceiver ddr) {
-        this.ddr = ddr;
+    public mumblePttWidget(MapView mapView) {
         setName("Mumble PTT");
         RootLayoutWidget root = (RootLayoutWidget) mapView.getComponentExtra("rootLayoutWidget");
         LinearLayoutWidget brLayout = root.getLayout(RootLayoutWidget.BOTTOM_RIGHT);
         brLayout.addWidget(this);
-        addOnClickListener(this);
+        addOnPressListener(this);
+        addOnUnpressListener(this);
         setIcon(toggled);
     }
     private void setIcon(int toggle) {
@@ -61,14 +60,23 @@ public class mumblePttWidget extends MarkerIconWidget
     }
 
     @Override
-    public void onMapWidgetClick(MapWidget mapWidget, MotionEvent event) {
+    public void onMapWidgetPress(MapWidget mapWidget, MotionEvent event) {
         if (mapWidget == this) {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                Intent i = new Intent("se.lublin.mumla.action.TALK");
-                //i.putExtra("EXTRA_TALK_STATUS", "off");
-                AtakBroadcast.getInstance().sendSystemBroadcast(i);
-                setIcon(((++toggled) % 2));
-            }
+            Log.i(TAG, String.valueOf(event.getAction()));
+            Intent i = new Intent("se.lublin.mumla.action.TALK");
+            AtakBroadcast.getInstance().sendSystemBroadcast(i);
+            setIcon(((++toggled) % 2));
         }
+    }
+
+    @Override
+    public void onMapWidgetUnpress(MapWidget mapWidget, MotionEvent event) {
+        if (mapWidget == this) {
+            Log.i(TAG, String.valueOf(event.getAction()));
+            Intent i = new Intent("se.lublin.mumla.action.TALK");
+            AtakBroadcast.getInstance().sendSystemBroadcast(i);
+            setIcon(((++toggled) % 2));
+        }
+
     }
 }
