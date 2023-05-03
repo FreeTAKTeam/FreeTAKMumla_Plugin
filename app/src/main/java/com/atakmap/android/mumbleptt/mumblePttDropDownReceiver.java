@@ -34,6 +34,7 @@ public class mumblePttDropDownReceiver extends DropDownReceiver implements
         OnStateListener {
 
     public static final String TAG = "mumblePtt";
+    public static final String SHOW_PLUGIN = "com.atakmap.android.mumbleptt.SHOW_PLUGIN";
 
     private final Context pluginContext;
     private final Context appContext;

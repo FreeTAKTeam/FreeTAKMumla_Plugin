@@ -22,10 +22,11 @@ public class mumblePttWidget extends MarkerIconWidget
     private final static int ICON_HEIGHT = 64;
 
     public static final String TAG = "mumblePttWidget";
-
+    private mumblePttDropDownReceiver ddr;
     private int toggled = 0;
 
-    public mumblePttWidget(MapView mapView) {
+    public mumblePttWidget(MapView mapView, mumblePttDropDownReceiver ddr) {
+        this.ddr = ddr;
         setName("Mumble PTT");
         RootLayoutWidget root = (RootLayoutWidget) mapView.getComponentExtra("rootLayoutWidget");
         LinearLayoutWidget brLayout = root.getLayout(RootLayoutWidget.BOTTOM_RIGHT);

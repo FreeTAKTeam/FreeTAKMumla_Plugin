@@ -9,7 +9,7 @@
 buildscript {
 
     ext.PLUGIN_VERSION = "1.0"
-    ext.ATAK_VERSION = "4.4.0"
+    ext.ATAK_VERSION = "4.9.0"
 
     def takdevVersion = '2.+'
 
@@ -38,7 +38,7 @@ buildscript {
         return getProperty(urlKey, null) != null
     }
 
-    ext.takrepoUrl = getProperty(urlKey, 'http://localhost/')
+    ext.takrepoUrl = getProperty(urlKey, 'https://localhost/')
     ext.takrepoUser = getProperty('takrepo.user', 'invalid')
     ext.takrepoPassword = getProperty('takrepo.password', 'invalid')
     ext.takdevPlugin = getProperty('takdev.plugin', "${rootDir}/../../atak-gradle-takdev.jar")
@@ -263,9 +263,10 @@ android {
             defaultConfig.versionName = PLUGIN_VERSION + " (" + getVersionName() + ") - [" + ATAK_VERSION + "]"
         }
 
-        gov.java.srcDirs 'src/gov/java'
-        gov.assets.srcDir 'src/gov/assets'
-        gov.res.srcDir 'src/gov/res'
+        // remove since 4.9.0
+        // gov.java.srcDirs 'src/gov/java'
+        // gov.assets.srcDir 'src/gov/assets'
+        // gov.res.srcDir 'src/gov/res'
 
         // Move the build types to build-types/<type>
         // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
@@ -281,7 +282,7 @@ android {
     defaultConfig {
         minSdkVersion 23
         ndk {
-            abiFilters "armeabi-v7a", "arm64-v8a", "x86"
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
     }
 }

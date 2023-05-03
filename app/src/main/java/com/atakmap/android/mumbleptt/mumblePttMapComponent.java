@@ -28,7 +28,10 @@ public class mumblePttMapComponent extends DropDownMapComponent {
 
         ddr = new mumblePttDropDownReceiver(
                 view, context);
-
+        Log.d(TAG, "registering the plugin filter");
+        DocumentedIntentFilter ddFilter = new DocumentedIntentFilter();
+        ddFilter.addAction(mumblePttDropDownReceiver.SHOW_PLUGIN);
+        registerDropDownReceiver(ddr, ddFilter);
         widget = new mumblePttWidget(view, ddr);
     }
 
