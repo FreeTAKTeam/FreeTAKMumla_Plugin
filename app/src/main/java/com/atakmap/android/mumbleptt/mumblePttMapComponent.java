@@ -20,6 +20,7 @@ import com.atakmap.android.dropdown.DropDownMapComponent;
 
 import com.atakmap.android.widgets.RootLayoutWidget;
 
+import com.atakmap.app.preferences.ToolsPreferenceFragment;
 import com.atakmap.coremap.log.Log;
 import com.atakmap.android.mumbleptt.plugin.R;
 import com.atakmap.map.AtakMapView;
@@ -87,6 +88,15 @@ public class mumblePttMapComponent extends DropDownMapComponent {
                 return false;
             }
         });
+
+        ToolsPreferenceFragment.register(
+                new ToolsPreferenceFragment.ToolPreference(
+                        pluginContext.getString(R.string.preferences_title),
+                        pluginContext.getString(R.string.preferences_summary),
+                        pluginContext.getString(R.string.key_mumbleptt_preferences),
+                        pluginContext.getResources().getDrawable(R.drawable.ic_launcher),
+                        new PluginPreferencesFragment(
+                                pluginContext)));
     }
 
     @Override
