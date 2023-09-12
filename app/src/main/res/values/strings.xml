@@ -7,8 +7,12 @@
     <!-- Settings / Preferences -->
     <string name="preferences_title">Mumble PTT Plugin Preferences</string>
     <string name="preferences_summary">Allow configuration of Mumble PTT plugin</string>
-    <string name="set_ptt">Set PTT key behavior</string>
+    <string name="set_ptt">PTT key behavior</string>
     <string name="set_ptt_summary">Configures the widget to function as a PTT vs hot mic</string>
+    <string name="set_s2t">Speech to Text</string>
+    <string name="set_s2t_summary">Enables Speech to Text to create CoTs</string>
+    <string name="use_hwbutton">Enable hardware button</string>
+    <string name="use_hwbutton_summary">Set a device hardware button to trigger talking</string>
     <!-- SharedPreferences Keys -->
     <string name="key_mumbleptt_preferences">plugin_mumbleptt_preferences</string>
 </resources>

@@ -1,20 +1,27 @@
 
 package com.atakmap.android.mumbleptt.plugin;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import com.atakmap.android.gui.ActionButton;
 import com.atakmap.android.maps.MapComponent;
 import com.atakmap.android.maps.MapView;
-import com.atakmap.android.mumbleptt.mumblePttMapComponent;
 
 import transapps.maps.plugin.lifecycle.Lifecycle;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.speech.RecognizerIntent;
 
+import com.atakmap.android.mumbleptt.PluginPreferencesFragment;
+import com.atakmap.android.mumbleptt.mumblePttMapComponent;
 import com.atakmap.android.mumbleptt.mumblePttWidget;
+import com.atakmap.app.preferences.ToolsPreferenceFragment;
 import com.atakmap.coremap.log.Log;
 
 public class mumblePttLifecycle implements Lifecycle {
@@ -22,6 +29,7 @@ public class mumblePttLifecycle implements Lifecycle {
     private final Context pluginContext;
     private final Collection<MapComponent> overlays;
     private MapView mapView;
+
 
     public static Activity activity;
 
@@ -31,7 +39,6 @@ public class mumblePttLifecycle implements Lifecycle {
         this.pluginContext = ctx;
         this.overlays = new LinkedList<>();
         this.mapView = null;
-        PluginNativeLoader.init(ctx);
     }
 
     @Override
@@ -48,7 +55,9 @@ public class mumblePttLifecycle implements Lifecycle {
             Log.w(TAG, "This plugin is only compatible with ATAK MapView");
             return;
         }
+
         this.mapView = (MapView) arg1.getView();
+
         mumblePttLifecycle.this.overlays
                 .add(new mumblePttMapComponent());
 
@@ -69,12 +78,22 @@ public class mumblePttLifecycle implements Lifecycle {
                 iter.remove();
             }
         }
+
+        ToolsPreferenceFragment.register(
+                new ToolsPreferenceFragment.ToolPreference(
+                        pluginContext.getString(R.string.preferences_title),
+                        pluginContext.getString(R.string.preferences_summary),
+                        pluginContext.getString(R.string.key_mumbleptt_preferences),
+                        pluginContext.getResources().getDrawable(R.drawable.ic_launcher),
+                        new PluginPreferencesFragment(
+                                pluginContext)));
     }
 
     @Override
     public void onDestroy() {
         for (MapComponent c : this.overlays)
             c.onDestroy(this.pluginContext, this.mapView);
+        ToolsPreferenceFragment.unregister(pluginContext.getString(R.string.key_mumbleptt_preferences));
     }
 
     @Override

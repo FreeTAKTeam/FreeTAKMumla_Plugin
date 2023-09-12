@@ -7,9 +7,4 @@
         impl="com.atakmap.android.mumbleptt.plugin.mumblePttLifecycle"
         singleton="true" />
 
-    <extension
-        type="transapps.maps.plugin.tool.ToolDescriptor"
-        impl="com.atakmap.android.mumbleptt.plugin.mumblePttTool"
-        singleton="true" />
-
 </plugin>

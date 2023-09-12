@@ -1,2 +1,35 @@
-# FreeTAKMumla_Plugin
-A project that host a ATAK plugin that display a PPT button for Mumla Android. See the [user docs](https://freetakteam.github.io/FreeTAKServer-User-Docs/tools/FreeTAK_Mumla/) for installation instructions
+(Plugin Name)
+
+
+_________________________________________________________________
+PURPOSE AND CAPABILITIES
+
+(General Description)
+
+
+_________________________________________________________________
+STATUS
+
+(In Progress?  Expected release?  Released?  To Who?  When?)
+
+_________________________________________________________________
+POINT OF CONTACTS
+
+(Who is developing this)
+
+_________________________________________________________________
+PORTS REQUIRED
+
+(This is important for ATO, networking, and other security concerns)
+
+_________________________________________________________________
+EQUIPMENT REQUIRED
+
+_________________________________________________________________
+EQUIPMENT SUPPORTED
+
+_________________________________________________________________
+COMPILATION
+
+_________________________________________________________________
+DEVELOPER NOTES

@@ -8,8 +8,8 @@
 
 buildscript {
 
-    ext.PLUGIN_VERSION = "1.0"
-    ext.ATAK_VERSION = "4.4.0"
+    ext.PLUGIN_VERSION = "1.4"
+    ext.ATAK_VERSION = "4.8.1"
 
     def takdevVersion = '2.+'
 
@@ -59,7 +59,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.2'
+        classpath 'com.android.tools.build:gradle:7.4.2'
         if(isDevKitEnabled()) {
             classpath "com.atakmap.gradle:atak-gradle-takdev:${takdevVersion}"
         } else {
@@ -129,8 +129,8 @@ def getVersionCode() {
 
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 33
+    buildToolsVersion "34.0.0"
 
    dexOptions {
         jumboMode = true
@@ -279,7 +279,8 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 26
+	targetSdkVersion 33
         ndk {
             abiFilters "armeabi-v7a", "arm64-v8a", "x86"
         }
@@ -289,5 +290,18 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
+    // Recyclerview version depends on some androidx libraries which
+    // are supplied by core, so they should be excluded.  Otherwise
+    // bad things happen in the release builds after proguarding
+    implementation ('androidx.recyclerview:recyclerview:1.1.0') {
+        exclude module: 'collection'
+        exclude module: 'core'
+        exclude module: 'lifecycle'
+        exclude module: 'core-common'
+        exclude module: 'collection'
+        exclude module: 'customview'
+    }
+
+    androidTestImplementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
 }
 

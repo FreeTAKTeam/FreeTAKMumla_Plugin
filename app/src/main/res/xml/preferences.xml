@@ -6,4 +6,19 @@
         android:title="@string/set_ptt"
         android:summary="@string/set_ptt_summary"
         android:defaultValue="true" />
+    <!--
+    <com.atakmap.android.gui.PanSwitchPreference
+        android:key="plugin_mumbleptt_s2t"
+        android:title="@string/set_s2t"
+        android:summary="@string/set_s2t_summary"
+        android:defaultValue="false" />
+    -->
+    <com.atakmap.android.gui.PanListPreference
+        android:key="plugin_mumbleptt_hwbutton"
+        android:title="@string/use_hwbutton"
+        android:summary="@string/use_hwbutton_summary"
+        android:dialogTitle="@string/use_hwbutton"
+        android:entries="@array/buttons"
+        android:entryValues="@array/button_values"
+        android:defaultValue="999"/>
 </PreferenceScreen>

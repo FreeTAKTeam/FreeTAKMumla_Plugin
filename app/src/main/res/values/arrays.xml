@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="buttons">
+        <item>None</item>
+        <item>Volume Up</item>
+        <item>Volume Down</item>
+        <item>Bixby</item>
+        <item>Headset</item>
+    </string-array>
+
+    <string-array name="button_values">
+        <item>999</item>
+        <item>24</item>
+        <item>25</item>
+        <item>1082</item>
+        <item>79</item>
+    </string-array>
+</resources>
