@@ -1,4 +1,16 @@
 
+# Build outputs and local/generated artifacts
+.gradle/
+build/
+app/build/
+dist/
+.takdev/
+.idea/
+local.properties
+app/proguard-gradle-repackage.txt
+.DS_Store
+**/.DS_Store
+
 .gradle/7.3.3/checksums/checksums.lock
 .gradle/7.3.3/dependencies-accessors/dependencies-accessors.lock
 .gradle/7.3.3/dependencies-accessors/gc.properties
